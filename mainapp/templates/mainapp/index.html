@@ -14,8 +14,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ subject.name }}</h5>
                 <p class="card-text">{{ subject.tagline }}</p>
-                {% comment %} <a href="{% url 'subject' subject.name %}" class="btn btn-primary">Show topics</a> {% endcomment %}
-                <a href="#" class="btn btn-primary">Show topics</a>
+                <a href="{% url 'subject' subject.name %}" class="btn btn-primary">Show topics</a>
             </div>
         </div>
         {% endfor %}

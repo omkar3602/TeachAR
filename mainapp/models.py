@@ -8,3 +8,12 @@ class Subject(models.Model):
 
     def __str__(self):
         return self.name
+
+class Topic(models.Model):
+    name = models.CharField(max_length=50)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    link = models.CharField(max_length=50)
+    image = models.ImageField(upload_to ='topics/')
+
+    def __str__(self):
+        return self.name

@@ -1,0 +1,23 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block title %}TeachAR{% endblock title %}
+
+{% block content %}
+    <h2>{{ subject.name }}</h2>
+    <h3 class="mt-5 mb-5">Topics</h3>
+    <div class="d-flex flex-row">
+        {% for topic in topics %}
+        <div class="card mr-5" style="width: 18rem;">
+            <img class="card-img-top" src="{{ topic.image.url }}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{ topic.name }}</h5>
+                <a href="{{ topic.link }}" class="btn btn-primary" target="_blank">AR effect</a>
+                <a href="#" class="btn btn-primary">QR</a>
+                <a href="#" class="btn btn-primary">Share</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock content %}
