@@ -1,0 +1,30 @@
+{% extends 'userauth/base.html' %}
+
+{% block title %}Sign Up{% endblock title %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Name</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Name" name="name" required>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput2" class="form-label">Username</label>
+          <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="Enter Username" name="username" required>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput2" class="form-label">Email</label>
+          <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="Enter Email" name="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput3" class="form-label">Password</label>
+          <input type="password" class="form-control" id="exampleFormControlInput3" placeholder="Enter Password" name="password" required>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput4" class="form-label">Password (again)</label>
+          <input type="password" class="form-control" id="exampleFormControlInput4" placeholder="Re-enter Password" name="password2" required>
+        </div>
+        <button type="submit" class="btn btn-outline-primary">Sign Up</button>
+    </form>
+{% endblock content %}

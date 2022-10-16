@@ -4,21 +4,23 @@ from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 # Create your models here.
 class MyAccountManager(BaseUserManager):
 
-    def create_user(self, name, username, password):
+    def create_user(self, name, username, email, password):
         if not username:
             raise ValueError("User must have an username.")
         user = self.model(
             name = name,
             username = username,
+            email = email,
         )
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, name, username, password):
+    def create_superuser(self, name, username, email, password):
         user = self.create_user(
             name = name,
             username = username,
+            email = email,
             password = password,
         )
         user.is_admin = True
@@ -29,8 +31,9 @@ class MyAccountManager(BaseUserManager):
 
 # Create your models here.
 class Account(AbstractBaseUser):
-    name        = models.CharField(max_length=50)
+    name            = models.CharField(max_length=50)
     username        = models.CharField(max_length=50, unique =True)
+    email           = models.EmailField(max_length=50, unique =True)
     is_admin        = models.BooleanField(default=False)
     is_active       = models.BooleanField(default=True)
     is_staff        = models.BooleanField(default=False)
@@ -40,7 +43,7 @@ class Account(AbstractBaseUser):
     objects = MyAccountManager()
 
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['name',]
+    REQUIRED_FIELDS = ['name', 'email']
 
     def __str__(self):
         return self.username
