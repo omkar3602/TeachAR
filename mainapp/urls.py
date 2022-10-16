@@ -6,5 +6,6 @@ urlpatterns = [
 
     # Subject
     path('subject/<str:name>', views.subject, name='subject'),
+    path('send_email', views.send_email, name='send_email'),
     
 ]
