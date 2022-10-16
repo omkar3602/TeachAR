@@ -4,6 +4,12 @@
 {% block title %}TeachAR{% endblock title %}
 
 {% block content %}
+    <h5 class="mb-5">
+        <a style="text-decoration:none; color:black" href="{% url 'home' %}">
+            <i class='far fa-arrow-alt-circle-left' style='font-size:22px'></i>
+            Subjects
+        </a>
+    </h5>
     <h2>{{ subject.name }}</h2>
     <h3 class="mt-5 mb-5">Topics</h3>
     <div class="d-flex flex-row">
@@ -12,9 +18,32 @@
             <img class="card-img-top" src="{{ topic.image.url }}" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">{{ topic.name }}</h5>
-                <a href="{{ topic.link }}" class="btn btn-primary" target="_blank">AR effect</a>
-                <a href="#" class="btn btn-primary">QR</a>
-                <a href="#" class="btn btn-primary">Share</a>
+                <div class="d-flex flex-row justify-content-around">
+                    <a href="{{ topic.link }}" class="btn btn-primary" target="_blank">AR effect</a>
+                    <a class="btn btn-light" data-toggle="modal" data-target="#{{ topic.name }}">QR</a>
+                    <a href="#" style="color:black; font-size:20px;">
+                        <i class="fa fa-share-alt" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="{{ topic.name }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{ topic.name }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <img class="mx-auto d-block" src="{{ topic.qr_code.url }}" alt="Qr code cap">
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                </div>
             </div>
         </div>
         {% endfor %}

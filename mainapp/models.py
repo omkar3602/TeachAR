@@ -13,6 +13,7 @@ class Topic(models.Model):
     name = models.CharField(max_length=50)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     link = models.CharField(max_length=50)
+    qr_code = models.ImageField(upload_to ='topics/qr_codes/')
     image = models.ImageField(upload_to ='topics/')
 
     def __str__(self):
