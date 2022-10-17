@@ -10,4 +10,4 @@ def generate_qr(s, name):
     # Create and save the png file naming "myqr.png"
     url.png(f'{name}_qr.png', scale = 6)
 
-generate_qr("https://ng900.zappar.io/3528775801665792790/1.0.1/", "fcc")
+generate_qr("https://ng900.zappar.io/3528775801665792790/1.0.2/", "fcc")
