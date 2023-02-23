@@ -24,9 +24,17 @@ python manage.py runserver
 ```
 
 * Great! The website should be running at http://localhost:8000/
+
+* **NOTE:** If you want to use the AR effects scan the images in the `target_images` folder.
 ---
 ### Admin credentials for testing
 
 Username: `admin`
+
+Password: `1234`
+
+### User credentials for testing
+
+Username: `omkar`
 
 Password: `1234`
